@@ -37,8 +37,9 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
+
+        getSupportActionBar().hide();
 
         // getting firebase instance
         fauth = FirebaseAuth.getInstance();
@@ -62,21 +63,10 @@ public class SignUp extends AppCompatActivity {
         binding.signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 signUp();
-
             }
         });
 
-
-        // cancel button
-//        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(SignUp.this,Signin.class));
-//                finish();
-//            }
-//        });
 
     }
 
@@ -122,7 +112,6 @@ public class SignUp extends AppCompatActivity {
                             Log.d("error","Signup failed",task.getException());
                             Snackbar.make(binding.signupbutton,task.getException().getMessage(),BaseTransientBottomBar.LENGTH_LONG).show();
                         }
-
                     }
                 });
 
@@ -132,10 +121,6 @@ public class SignUp extends AppCompatActivity {
         }else{
             progressDialog.dismiss();
             Snackbar.make(binding.signupbutton,"either of the field cannot be empty", BaseTransientBottomBar.LENGTH_LONG).show();}
-
-
-
-
 
     }
 
@@ -165,7 +150,3 @@ public class SignUp extends AppCompatActivity {
         binding = null;
     }
 }
-
-
-
-

@@ -1,16 +1,16 @@
 package com.harivansh.letschat;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,50 +33,36 @@ public class DashBoard extends AppCompatActivity {
 
 
 
-        // sign out button
-//        binding.signout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//
-//
-//            }
-//        });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.dashboard_menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
 
+    // menu created
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
-        getMenuInflater().inflate(R.menu.dashboard_menu,menu);
+        inflater.inflate(R.menu.dashboard_menu,menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
             case R.id.signout:
                 signOut();
-                return true;
+                break;
+
             case R.id.settings:
-                Toast.makeText(this,"setting",Toast.LENGTH_LONG).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+                Toast.makeText(this,"settings",Toast.LENGTH_LONG).show();
+                break;
         }
+
+        return true;
     }
 
-    // signout function
-
-    public void signOut(){
+    // sign out function
+    public void signOut () {
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(DashBoard.this);
         builder1.setMessage("Do you really want to sign out");
@@ -103,6 +89,9 @@ public class DashBoard extends AppCompatActivity {
         AlertDialog alert11 = builder1.create();
         alert11.show();
 
-
     }
+
 }
+
+
+

@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         // firebase instance
         fauth = FirebaseAuth.getInstance();
+        getSupportActionBar().hide();
 
         // Thread for loadscreen
         Thread LoadScreen = new Thread() {

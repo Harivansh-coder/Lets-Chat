@@ -26,10 +26,9 @@ public class Signin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySigninBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        View view = binding.getRoot();
-        setContentView(view);
-
+        getSupportActionBar().hide();
 
         fauth = FirebaseAuth.getInstance();
 

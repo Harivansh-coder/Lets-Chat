@@ -24,8 +24,9 @@ public class ForgotPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityForgotPasswordBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
+
+        getSupportActionBar().hide();
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -66,7 +67,6 @@ public class ForgotPassword extends AppCompatActivity {
         binding.BackFps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(ForgotPassword.this,Signin.class));
                 finish();
 
