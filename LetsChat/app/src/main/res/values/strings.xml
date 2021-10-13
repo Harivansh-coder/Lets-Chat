@@ -28,4 +28,10 @@
     <string name="setting">setting</string>
     <string name="back">Back</string>
     <string name="Next">Next</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chats">Chats</string>
+    <string name="settings">Settings</string>
+    <string name="last_message">last message</string>
+    <string name="username">UserName</string>
 </resources>

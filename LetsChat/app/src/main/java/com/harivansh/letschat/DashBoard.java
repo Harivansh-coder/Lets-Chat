@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,12 +15,18 @@ import android.view.MenuItem;
 
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.harivansh.letschat.databinding.ActivityDashBoardBinding;
+import com.harivansh.letschat.fragment.ChatFragment;
+import com.harivansh.letschat.fragment.SettingsFragment;
 
 public class DashBoard extends AppCompatActivity {
 
     private ActivityDashBoardBinding binding;
+
+    private BottomNavigationView bottomNavigationView;
 
     private FirebaseAuth fauth;
 
@@ -31,9 +39,48 @@ public class DashBoard extends AppCompatActivity {
         // firebase instance
         fauth = FirebaseAuth.getInstance();
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //binding.dashBoardViewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager()));
+        //binding.dashBoardTabLayout.setupWithViewPager(binding.dashBoardViewPager);
+        //binding.bottomNavigation.setOnItemSelectedListener(navigationItemSelectedListener);
+
+        // default fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChatFragment()).commit();
+        bottomNavigationView.setSelectedItemId(R.id.chat_page);
+
+
+
+
+        // bottom navigationlistner
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+                Fragment selectedFragment = null;
+
+                switch (item.getItemId()){
+
+                    case R.id.chat_page:
+                        selectedFragment = new ChatFragment();
+                        break;
+                    case R.id.setting_page:
+                        selectedFragment = new SettingsFragment();
+                        break;
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,selectedFragment).commit();
+                return true;
+            }
+        });
+
 
 
     }
+
+
+
 
 
     // menu created
