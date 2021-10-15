@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.harivansh.letschat.databinding.ActivityDashBoardBinding;
 import com.harivansh.letschat.fragment.ChatFragment;
+import com.harivansh.letschat.fragment.ProfileFragment;
 import com.harivansh.letschat.fragment.SettingsFragment;
 
 public class DashBoard extends AppCompatActivity {
@@ -67,6 +68,9 @@ public class DashBoard extends AppCompatActivity {
                         break;
                     case R.id.setting_page:
                         selectedFragment = new SettingsFragment();
+                        break;
+                    case R.id.profile_page:
+                        selectedFragment = new ProfileFragment();
                         break;
                 }
 

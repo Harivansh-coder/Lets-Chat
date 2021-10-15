@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsChat">
         <activity
+            android:name=".ChatScreen"
+            android:exported="false" />
+        <activity
             android:name=".DashBoard"
             android:exported="true" />
         <activity
@@ -23,7 +26,6 @@
         <activity
             android:name=".Signin"
             android:exported="true" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

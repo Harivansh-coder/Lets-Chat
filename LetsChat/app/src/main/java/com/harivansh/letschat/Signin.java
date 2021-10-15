@@ -1,5 +1,7 @@
 package com.harivansh.letschat;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -94,7 +96,8 @@ public class Signin extends AppCompatActivity {
 
                                 }else {
                                     fauth.signOut();
-                                    Snackbar.make(binding.signinbutton,"please verify your self",BaseTransientBottomBar.LENGTH_LONG).show();
+                                    verifyEmail(user_email);
+                                    Snackbar.make(binding.signinbutton,"you are not a verified user, verification email has been sent",BaseTransientBottomBar.LENGTH_LONG).show();
                                 }
 
 
@@ -106,15 +109,32 @@ public class Signin extends AppCompatActivity {
 
                         }
                     });
-
-
-
         }else Snackbar.make(binding.signinbutton,"either of the fields cannot be empty",BaseTransientBottomBar.LENGTH_LONG).show();
 
 
 
     }
 
+    public void verifyEmail(String email){
+
+        FirebaseUser user = fauth.getCurrentUser();
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent.");
+                            Snackbar.make(binding.signinbutton,"a verification has been sent to you", BaseTransientBottomBar.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
 }
 

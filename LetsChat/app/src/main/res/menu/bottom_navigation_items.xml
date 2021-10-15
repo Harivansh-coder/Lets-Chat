@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
         <item
+            android:id="@+id/profile_page"
+            android:enabled="true"
+            android:icon="@drawable/userprofile"
+            android:title="@string/profile"/>
+        <item
             android:id="@+id/chat_page"
             android:enabled="true"
             android:icon="@drawable/ic_chat_icon"

@@ -8,6 +8,9 @@ public class User {
     private String userProfileImage;
     private String userLastMessage;
 
+    public User() {
+    }
+
     public User(String userId, String userName, String userEmail, String userProfileImage, String userLastMessage) {
         this.userId = userId;
         this.userName = userName;
@@ -25,7 +28,7 @@ public class User {
 
 
 
-    public String getUserId() {
+    public String getUserId(String key) {
         return userId;
     }
 

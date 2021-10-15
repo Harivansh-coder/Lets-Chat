@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.harivansh.letschat.R;
 import com.harivansh.letschat.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
 
         public ProfileViewHolder(View view){
             super(view);
-            profileImage = view.findViewById(R.id.profile_image);
+            profileImage = view.findViewById(R.id.chat_profile_image);
             userName = view.findViewById(R.id.user_name);
             lastMessage = view.findViewById(R.id.last_message);
             //view.setOnClickListener(this);
@@ -64,7 +65,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
 
     @Override
     public void onBindViewHolder(@NonNull ProfileViewHolder holder, int position) {
+        User user = userArrayList.get(position);
+        Picasso.get().load(user.getUserProfileImage()).
+                placeholder(R.drawable.profile).into(holder.profileImage);
 
+        holder.userName.setText(user.getUserName());
+        //last message
     }
 
 
