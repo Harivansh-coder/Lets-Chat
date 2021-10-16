@@ -35,4 +35,5 @@
     <string name="last_message">last message</string>
     <string name="username">UserName</string>
     <string name="profile">Profile</string>
+    <string name="message">Message</string>
 </resources>
