@@ -27,8 +27,7 @@ public class User {
     }
 
 
-
-    public String getUserId(String key) {
+    public String getUserId() {
         return userId;
     }
 
@@ -67,4 +66,5 @@ public class User {
     public void setUserLastMessage(String userLastMessage) {
         this.userLastMessage = userLastMessage;
     }
+
 }

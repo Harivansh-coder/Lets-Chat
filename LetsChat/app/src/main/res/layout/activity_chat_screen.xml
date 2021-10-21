@@ -1,101 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ChatScreen">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    android:background="@color/chatscreen_background"
+        tools:context=".ChatScreen">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/chatscreenToolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chat_screen_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="0dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/chat_profile_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="45dp"
-        android:src="@drawable/profile"
-        app:layout_constraintBottom_toBottomOf="@+id/chatscreenToolbar"
-        app:layout_constraintStart_toStartOf="@+id/chatscreenToolbar"
-        app:layout_constraintTop_toTopOf="@+id/chatscreenToolbar" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/chatscreenToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/chatscreen_username"
-        android:layout_width="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chat_profile_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="45dp"
+            android:src="@drawable/profile"
+            app:layout_constraintBottom_toBottomOf="@+id/chatscreenToolbar"
+            app:layout_constraintStart_toStartOf="@+id/chatscreenToolbar"
+            app:layout_constraintTop_toTopOf="@+id/chatscreenToolbar" />
+
+        <TextView
+            android:id="@+id/chatscreen_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="User name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/chatscreenToolbar"
+            app:layout_constraintStart_toEndOf="@+id/chat_profile_image"
+            app:layout_constraintTop_toTopOf="@+id/chatscreenToolbar" />
+
+        <ImageView
+            android:id="@+id/chatscreen_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/chatscreenToolbar"
+            app:layout_constraintStart_toStartOf="@+id/chatscreenToolbar"
+            app:layout_constraintTop_toTopOf="@+id/chatscreenToolbar"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycle_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="User name"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/chatscreenToolbar"
-        app:layout_constraintStart_toEndOf="@+id/chat_profile_image"
-        app:layout_constraintTop_toTopOf="@+id/chatscreenToolbar" />
+        android:layout_weight="1"
+         />
 
-    <ImageView
-        android:id="@+id/chatscreen_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chatscreenToolbar"
-        app:layout_constraintStart_toStartOf="@+id/chatscreenToolbar"
-        app:layout_constraintTop_toTopOf="@+id/chatscreenToolbar"
-        app:srcCompat="@drawable/ic_arrow_back" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chatscreenToolbar">
+        android:orientation="horizontal"
+        android:padding="8dp"
+        >
 
-        <androidx.recyclerview.widget.RecyclerView
+        <EditText
+            android:id="@+id/chat_message"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/message_box_design"
+            android:hint="@string/message"
+            android:paddingLeft="20dp" />
 
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chatscreenToolbar">
+<!--        <Button-->
+<!--            android:id="@+id/send_message"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_weight="0"-->
+<!--            android:background="@drawable/ic_send_logo"-->
+<!--            android:backgroundTint="@color/Blue" />-->
 
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/send_message"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/message_box_design"
-                android:hint="@string/message"
-                android:padding="10dp" />
-
-            <Button
-                android:id="@+id/send_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/Blue"
-                />
-
-        </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0"
+            android:tint="@color/Blue"
+            android:backgroundTint="@color/white"
+            android:layout_marginRight="10dp"
+            android:contentDescription="@string/fab_content_desc"
+            app:srcCompat="@drawable/ic_send_logo"/>
 
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+
+
+
+
+

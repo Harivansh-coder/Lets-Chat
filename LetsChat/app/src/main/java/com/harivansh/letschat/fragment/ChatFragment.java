@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class ChatFragment extends Fragment {
 
+
     public ChatFragment() {
 
     }
@@ -61,7 +62,7 @@ public class ChatFragment extends Fragment {
 
                 for( DataSnapshot dataSnapshot : snapshot.getChildren()){
                     User user = dataSnapshot.getValue(User.class);
-                    user.getUserId(dataSnapshot.getKey());
+                    user.setUserId(dataSnapshot.getKey());
                     userArrayList.add(user);
                 }
 

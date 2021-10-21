@@ -1,6 +1,7 @@
 package com.harivansh.letschat.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.harivansh.letschat.ChatScreen;
 import com.harivansh.letschat.R;
 import com.harivansh.letschat.model.User;
 import com.squareup.picasso.Picasso;
@@ -21,16 +23,16 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
     private ArrayList<User> userArrayList;
     private Context context;
 
-    //private ProfileViewClickListener listener;
 
     public ProfileAdapter(ArrayList<User> userArrayList, Context context) {
         this.userArrayList = userArrayList;
         this.context = context;
+
     }
 
 
 
-    public class ProfileViewHolder extends RecyclerView.ViewHolder{
+    public class ProfileViewHolder extends RecyclerView.ViewHolder {
 
         ImageView profileImage;
         TextView userName, lastMessage;
@@ -40,13 +42,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
             profileImage = view.findViewById(R.id.chat_profile_image);
             userName = view.findViewById(R.id.user_name);
             lastMessage = view.findViewById(R.id.last_message);
-            //view.setOnClickListener(this);
+
         }
 
-//        @Override
-//        public void onClick(View v) {
-//            listener.onClick(v,getAdapterPosition());
-//        }
+
 
     }
 
@@ -71,6 +70,18 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
 
         holder.userName.setText(user.getUserName());
         //last message
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChatScreen.class);
+                intent.putExtra("userId",user.getUserId());
+                intent.putExtra("userProfileImg",user.getUserProfileImage());
+                intent.putExtra("userName",user.getUserName());
+                context.startActivity(intent);
+
+            }
+        });
     }
 
 
@@ -80,7 +91,5 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
         return userArrayList.size();
     }
 
-//    public interface ProfileViewClickListener{
-//        void onClick(View view, int position);
-//    }
+
 }
