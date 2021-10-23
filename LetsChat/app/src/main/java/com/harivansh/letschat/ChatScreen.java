@@ -46,7 +46,7 @@ public class ChatScreen extends AppCompatActivity {
 
         // user data from firebase
 
-        String userId = firebaseAuth.getUid();
+        final String userId = firebaseAuth.getUid();
         String receiverId = getIntent().getStringExtra("userId");
 
 
