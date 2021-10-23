@@ -21,6 +21,7 @@
         android:maxWidth="270dp"
         android:minWidth="50dp"
         android:text="Message"
+        android:textColor="@color/Blue"
         app:layout_constraintBottom_toTopOf="@+id/receiver_time"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent" />

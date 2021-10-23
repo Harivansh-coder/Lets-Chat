@@ -1,16 +1,28 @@
 package com.harivansh.letschat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.harivansh.letschat.adapter.ChatAdapter;
 import com.harivansh.letschat.databinding.ActivityChatScreenBinding;
 import com.harivansh.letschat.fragment.ChatFragment;
+import com.harivansh.letschat.model.Messages;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class ChatScreen extends AppCompatActivity {
 
@@ -55,6 +67,76 @@ public class ChatScreen extends AppCompatActivity {
 
         Picasso.get().load(profileImage).placeholder(R.drawable.profile).into(binding.chatProfileImage);
         binding.chatscreenUsername.setText(getIntent().getStringExtra("userName"));
+
+
+        // chatting data implementation
+
+        final ArrayList<Messages> messageArrayList = new ArrayList<>();
+
+        final ChatAdapter chatAdapter = new ChatAdapter(messageArrayList, this);
+
+        binding.chatRecycleView.setAdapter(chatAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        binding.chatRecycleView.setLayoutManager(linearLayoutManager);
+
+
+        // chatting firebase backend
+
+        final String senderChatId = userId + receiverId;
+        final String receiverChatId = receiverId + userId;
+
+        // filling the chat bubbles
+
+        firebaseDatabase.getReference().child("Chats")
+                .child(senderChatId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        messageArrayList.clear();
+                        for ( DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            Messages messages = dataSnapshot.getValue(Messages.class);
+
+                            messageArrayList.add(messages);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+        binding.sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String chatMessage = binding.chatMessage.getText().toString();
+
+                final Messages messages = new Messages(userId, chatMessage);
+                messages.setMessageTime(new Date().getTime());
+                binding.chatMessage.setText("");
+
+                firebaseDatabase.getReference().child("Chats")
+                        .child(senderChatId)
+                        .push()
+                        .setValue(messages).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        firebaseDatabase.getReference().child("Chats")
+                                .child(receiverChatId)
+                                .push()
+                                .setValue(messages).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
 
 
 
