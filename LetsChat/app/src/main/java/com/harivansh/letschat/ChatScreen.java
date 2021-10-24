@@ -32,6 +32,8 @@ public class ChatScreen extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
+    private ArrayList<Messages> messageArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,14 +73,12 @@ public class ChatScreen extends AppCompatActivity {
 
         // chatting data implementation
 
-        final ArrayList<Messages> messageArrayList = new ArrayList<>();
+        messageArrayList = new ArrayList<>();
 
         final ChatAdapter chatAdapter = new ChatAdapter(messageArrayList, this);
 
-        binding.chatRecycleView.setAdapter(chatAdapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        binding.chatRecycleView.setLayoutManager(linearLayoutManager);
+
 
 
         // chatting firebase backend
@@ -96,9 +96,9 @@ public class ChatScreen extends AppCompatActivity {
                         messageArrayList.clear();
                         for ( DataSnapshot dataSnapshot : snapshot.getChildren()){
                             Messages messages = dataSnapshot.getValue(Messages.class);
-
                             messageArrayList.add(messages);
                         }
+                        chatAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -106,6 +106,12 @@ public class ChatScreen extends AppCompatActivity {
 
                     }
                 });
+
+        chatAdapter.notifyDataSetChanged();
+        binding.chatRecycleView.setAdapter(chatAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        binding.chatRecycleView.setLayoutManager(linearLayoutManager);
+
 
 
         binding.sendMessage.setOnClickListener(new View.OnClickListener() {
@@ -141,4 +147,5 @@ public class ChatScreen extends AppCompatActivity {
 
 
     }
+
 }

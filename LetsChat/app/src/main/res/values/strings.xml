@@ -37,4 +37,5 @@
     <string name="profile">Profile</string>
     <string name="message">Message</string>
     <string name="fab_content_desc">send message</string>
+    <string name="group_chat">group chat</string>
 </resources>

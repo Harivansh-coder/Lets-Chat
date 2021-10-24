@@ -68,6 +68,8 @@ public class ChatAdapter extends RecyclerView.Adapter{
 
         Messages messages = messagesArrayList.get(position);
 
+        // message time
+
         if (holder.getClass() == SenderViewHolder.class){
             ((SenderViewHolder) holder).senderMessage.setText(messages.getMessageText());
         }else{

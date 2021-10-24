@@ -15,6 +15,7 @@
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_dash_board.xml" value="0.264" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_example.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_group_chta.xml" value="0.25" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/activity_signin.xml" value="0.264" />
@@ -23,8 +24,8 @@
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/fragment_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/receiver_message_layout.xml" value="0.536" />
-        <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/sender_message_layout.xml" value="0.4" />
-        <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/user_chat_profile.xml" value="0.6" />
+        <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/sender_message_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/layout/user_chat_profile.xml" value="0.2" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/menu/bottom_navigation_items.xml" value="0.4" />
         <entry key="..\:/Users/Harivansh Thakur/AndroidStudioProjects/LetsChat/app/src/main/res/menu/dashboard_menu.xml" value="0.25416666666666665" />
       </map>

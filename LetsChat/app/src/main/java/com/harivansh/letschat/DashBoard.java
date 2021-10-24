@@ -107,6 +107,9 @@ public class DashBoard extends AppCompatActivity {
             case R.id.settings:
                 Toast.makeText(this,"settings",Toast.LENGTH_LONG).show();
                 break;
+//            case R.id.grp_chat:
+//                Toast.makeText(this,"grp chat",Toast.LENGTH_LONG).show();
+//                break;
         }
 
         return true;

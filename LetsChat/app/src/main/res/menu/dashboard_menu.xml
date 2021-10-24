@@ -5,6 +5,10 @@
         android:id="@+id/settings"
         android:title="@string/setting"
         />
+<!--    <item-->
+<!--        android:id="@+id/grp_chat"-->
+<!--        android:title="@string/group_chat"-->
+<!--        />-->
 
     <item
         android:id="@+id/signout"
