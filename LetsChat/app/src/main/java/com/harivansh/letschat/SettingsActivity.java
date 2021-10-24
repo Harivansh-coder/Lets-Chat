@@ -24,6 +24,8 @@ import com.harivansh.letschat.databinding.ActivitySettingsBinding;
 import com.harivansh.letschat.model.User;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class SettingsActivity extends AppCompatActivity {
 
 
@@ -50,6 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
+
         // back button
 
         binding.settingBackButton.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +69,20 @@ public class SettingsActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        // getting already added data from database
+
                         User user = snapshot.getValue(User.class);
                         Picasso.get()
                                 .load(user.getUserProfileImage())
                                 .placeholder(R.drawable.profile)
                                 .into(binding.settingsProfileImage);
+
+                        binding.settingUserNameText.setText(user.getUserName());
+                        binding.settingAbout.setText(user.getStatus());
+
+
+
                     }
 
                     @Override
@@ -80,7 +92,25 @@ public class SettingsActivity extends AppCompatActivity {
                 });
 
         // save button
-        
+        binding.settingSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String status = binding.settingAbout.getText().toString();
+                String userName = binding.settingUserNameText.getText().toString();
+
+                HashMap<String, Object > objectHashMap = new HashMap<>();
+
+                objectHashMap.put("userName",userName);
+                objectHashMap.put("status",status);
+
+                // adding new setting data to database
+                firebaseDatabase.getReference().child("Users")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .updateChildren(objectHashMap);
+
+                Snackbar.make(binding.settingSaveButton, "settings applied", BaseTransientBottomBar.LENGTH_LONG).show();
+            }
+        });
 
         // adding profile image
 
@@ -91,7 +121,6 @@ public class SettingsActivity extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 startActivityForResult(intent, 33);
-
 
             }
         });

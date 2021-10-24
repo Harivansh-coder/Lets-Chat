@@ -8,6 +8,8 @@ public class User {
     private String userProfileImage;
     private String userLastMessage;
 
+    private String status;
+
     public User() {
     }
 
@@ -17,6 +19,15 @@ public class User {
         this.userEmail = userEmail;
         this.userProfileImage = userProfileImage;
         this.userLastMessage = userLastMessage;
+    }
+
+    public User(String userId, String userName, String userEmail, String userProfileImage, String userLastMessage, String status) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userProfileImage = userProfileImage;
+        this.userLastMessage = userLastMessage;
+        this.status = status;
     }
 
     public User(String userName, String userEmail) {
@@ -67,4 +78,11 @@ public class User {
         this.userLastMessage = userLastMessage;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

@@ -49,10 +49,7 @@ public class ChatFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         ProfileAdapter profileAdapter = new ProfileAdapter(userArrayList, getContext());
-        fragmentChatBinding.userChatRecycleView.setAdapter(profileAdapter);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        fragmentChatBinding.userChatRecycleView.setLayoutManager(layoutManager);
 
 
 
@@ -60,6 +57,7 @@ public class ChatFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                userArrayList.clear();
                 for( DataSnapshot dataSnapshot : snapshot.getChildren()){
                     User user = dataSnapshot.getValue(User.class);
                     user.setUserId(dataSnapshot.getKey());
@@ -74,6 +72,12 @@ public class ChatFragment extends Fragment {
 
             }
         });
+
+
+        fragmentChatBinding.userChatRecycleView.setAdapter(profileAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        fragmentChatBinding.userChatRecycleView.setLayoutManager(layoutManager);
 
 
         return fragmentChatBinding.getRoot();
