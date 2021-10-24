@@ -79,12 +79,7 @@ public class DashBoard extends AppCompatActivity {
             }
         });
 
-
-
     }
-
-
-
 
 
     // menu created
@@ -105,7 +100,7 @@ public class DashBoard extends AppCompatActivity {
                 break;
 
             case R.id.settings:
-                Toast.makeText(this,"settings",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(DashBoard.this, SettingsActivity.class));
                 break;
 //            case R.id.grp_chat:
 //                Toast.makeText(this,"grp chat",Toast.LENGTH_LONG).show();
