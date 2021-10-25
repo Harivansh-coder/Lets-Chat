@@ -7,7 +7,7 @@
     tools:context=".fragment.ProfileFragment">
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_page_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -25,7 +25,7 @@
         android:layout_marginTop="70dp"
         android:text="@string/user_name"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_page_image" />
 
@@ -37,7 +37,7 @@
         android:layout_marginTop="30dp"
         android:text="About"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -48,7 +48,7 @@
         android:layout_marginStart="30dp"
         android:text="user name"
         android:textColor="@color/Blue"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
@@ -60,7 +60,7 @@
         android:layout_marginStart="30dp"
         android:text="about"
         android:textColor="@color/Blue"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5"
@@ -74,7 +74,7 @@
         android:layout_marginTop="30dp"
         android:text="Email"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -85,7 +85,7 @@
         android:layout_marginStart="30dp"
         android:text="email"
         android:textColor="@color/Blue"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />

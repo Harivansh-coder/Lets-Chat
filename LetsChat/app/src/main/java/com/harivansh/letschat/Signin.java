@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,8 @@ public class Signin extends AppCompatActivity {
     private ActivitySigninBinding binding;
     private FirebaseAuth fauth;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,11 @@ public class Signin extends AppCompatActivity {
         getSupportActionBar().hide();
 
         fauth = FirebaseAuth.getInstance();
+
+
+        // progress dialog
+        progressDialog = new ProgressDialog(Signin.this);
+        progressDialog.setMessage("A moment please");
 
 
         // Login Button
@@ -69,6 +77,8 @@ public class Signin extends AppCompatActivity {
     // Sign in function
     void SignIn(){
 
+        progressDialog.show();
+
         //binding.signinprogress.setVisibility(View.VISIBLE);
 
         String user_email = binding.userEmail.getText().toString().trim();
@@ -88,6 +98,8 @@ public class Signin extends AppCompatActivity {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                                 if (user.isEmailVerified()){
+
+                                    progressDialog.dismiss();
 
                                     Log.d("message", "signin success");
                                     Snackbar.make(binding.signinbutton,"signin successful", BaseTransientBottomBar.LENGTH_LONG).show();

@@ -156,7 +156,7 @@ public class SettingsActivity extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             firebaseDatabase.getReference().child("Users")
                                     .child(FirebaseAuth.getInstance().getUid())
-                                    .child("profileImage").setValue(uri.toString());
+                                    .child("userProfileImage").setValue(uri.toString());
                         }
                     });
                     Snackbar.make(binding.settingChangeImage, "Image added", BaseTransientBottomBar.LENGTH_LONG).show();

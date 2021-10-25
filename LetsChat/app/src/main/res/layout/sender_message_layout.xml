@@ -32,6 +32,7 @@
             android:inputType="textMultiLine"
             android:maxWidth="270dp"
             android:minWidth="50dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="4dp"
             android:text="Message"

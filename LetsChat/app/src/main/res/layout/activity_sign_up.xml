@@ -13,7 +13,7 @@
         android:fontFamily="monospace"
         android:text="@string/sign_up"
         android:textColor="@color/Blue"
-        android:textSize="50sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
