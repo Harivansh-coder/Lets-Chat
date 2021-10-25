@@ -4,6 +4,7 @@ package com.harivansh.letschat.model;
 public class Messages {
 
     String messageId;
+    String messageDatabaseId;
     String messageText;
     Long messageTime;
 
@@ -16,6 +17,13 @@ public class Messages {
     public Messages(String messageId, String messageText) {
         this.messageId = messageId;
         this.messageText = messageText;
+    }
+
+    public Messages(String messageId, String messageDatabaseId, String messageText, Long messageTime) {
+        this.messageId = messageId;
+        this.messageDatabaseId = messageDatabaseId;
+        this.messageText = messageText;
+        this.messageTime = messageTime;
     }
 
     public Messages() {
@@ -43,5 +51,13 @@ public class Messages {
 
     public void setMessageTime(Long messageTime) {
         this.messageTime = messageTime;
+    }
+
+    public String getMessageDatabaseId() {
+        return messageDatabaseId;
+    }
+
+    public void setMessageDatabaseId(String messageDatabaseId) {
+        this.messageDatabaseId = messageDatabaseId;
     }
 }

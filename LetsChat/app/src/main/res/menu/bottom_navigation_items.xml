@@ -11,10 +11,10 @@
             android:enabled="true"
             android:icon="@drawable/ic_chat_icon"
             android:title="@string/chats"/>
-        <item
-            android:id="@+id/setting_page"
-            android:enabled="true"
-            android:icon="@drawable/ic_baseline_settings"
-            android:title="@string/settings"/>
+<!--        <item-->
+<!--            android:id="@+id/setting_page"-->
+<!--            android:enabled="true"-->
+<!--            android:icon="@drawable/ic_baseline_settings"-->
+<!--            android:title="@string/settings"/>-->
 
 </menu>

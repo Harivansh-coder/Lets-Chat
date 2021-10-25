@@ -75,7 +75,7 @@ public class ChatScreen extends AppCompatActivity {
 
         messageArrayList = new ArrayList<>();
 
-        final ChatAdapter chatAdapter = new ChatAdapter(messageArrayList, this);
+        final ChatAdapter chatAdapter = new ChatAdapter(messageArrayList, this, receiverId);
 
 
 
@@ -96,6 +96,8 @@ public class ChatScreen extends AppCompatActivity {
                         messageArrayList.clear();
                         for ( DataSnapshot dataSnapshot : snapshot.getChildren()){
                             Messages messages = dataSnapshot.getValue(Messages.class);
+                            messages.setMessageDatabaseId(dataSnapshot.getKey());
+
                             messageArrayList.add(messages);
                         }
                         chatAdapter.notifyDataSetChanged();

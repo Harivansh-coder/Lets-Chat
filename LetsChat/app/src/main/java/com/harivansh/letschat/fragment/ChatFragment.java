@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -61,7 +62,13 @@ public class ChatFragment extends Fragment {
                 for( DataSnapshot dataSnapshot : snapshot.getChildren()){
                     User user = dataSnapshot.getValue(User.class);
                     user.setUserId(dataSnapshot.getKey());
-                    userArrayList.add(user);
+
+                    // adding users to adapter array
+
+                    if (!user.getUserId().equals(FirebaseAuth.getInstance().getUid())){
+                        userArrayList.add(user);
+                    }
+
                 }
 
                 profileAdapter.notifyDataSetChanged();

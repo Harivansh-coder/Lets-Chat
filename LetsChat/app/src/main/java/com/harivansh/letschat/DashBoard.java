@@ -66,9 +66,9 @@ public class DashBoard extends AppCompatActivity {
                     case R.id.chat_page:
                         selectedFragment = new ChatFragment();
                         break;
-                    case R.id.setting_page:
-                        selectedFragment = new SettingsFragment();
-                        break;
+//                    case R.id.setting_page:
+//                        selectedFragment = new SettingsFragment();
+//                        break;
                     case R.id.profile_page:
                         selectedFragment = new ProfileFragment();
                         break;
