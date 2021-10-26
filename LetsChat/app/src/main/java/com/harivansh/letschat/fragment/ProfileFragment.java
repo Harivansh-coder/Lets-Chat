@@ -1,14 +1,13 @@
 package com.harivansh.letschat.fragment;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -17,30 +16,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.harivansh.letschat.R;
-import com.harivansh.letschat.databinding.FragmentChatBinding;
 import com.harivansh.letschat.databinding.FragmentProfileBinding;
 import com.harivansh.letschat.model.User;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
 
 public class ProfileFragment extends Fragment {
 
-
+    private static final String TAG = "ProfileFragment";
+    private FragmentProfileBinding fragmentProfileBinding;
+    private DatabaseReference databaseReference;
 
     public ProfileFragment() {
         // Required empty public constructor
     }
-
-
-    private FragmentProfileBinding fragmentProfileBinding;
-
-    private DatabaseReference databaseReference;
-
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,14 +64,10 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
-                         //Getting user failed, log a message
-                        Log.w("profile database error", "loadPost:onCancelled", error.toException());
+                        //Getting user failed, log a message
+                        Log.w(TAG, "loadPost:onCancelled", error.toException());
                     }
                 });
-
-
-
-
 
 
         return fragmentProfileBinding.getRoot();

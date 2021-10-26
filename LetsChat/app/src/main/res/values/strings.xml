@@ -38,6 +38,6 @@
     <string name="message">Message</string>
     <string name="fab_content_desc">send message</string>
     <string name="group_chat">group chat</string>
-    <string name="user_name">User Name</string>
+    <string name="user_name">Name</string>
     <string name="save">Save</string>
 </resources>

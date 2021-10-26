@@ -1,13 +1,13 @@
 package com.harivansh.letschat;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -51,8 +51,6 @@ public class SettingsActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
 
 
-
-
         // back button
 
         binding.settingBackButton.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +80,6 @@ public class SettingsActivity extends AppCompatActivity {
                         binding.settingAbout.setText(user.getStatus());
 
 
-
                     }
 
                     @Override
@@ -98,10 +95,10 @@ public class SettingsActivity extends AppCompatActivity {
                 String status = binding.settingAbout.getText().toString();
                 String userName = binding.settingUserNameText.getText().toString();
 
-                HashMap<String, Object > objectHashMap = new HashMap<>();
+                HashMap<String, Object> objectHashMap = new HashMap<>();
 
-                objectHashMap.put("userName",userName);
-                objectHashMap.put("status",status);
+                objectHashMap.put("userName", userName);
+                objectHashMap.put("status", status);
 
                 // adding new setting data to database
                 firebaseDatabase.getReference().child("Users")
@@ -126,8 +123,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     // getting uri from local machine and uploading to firebase storage
@@ -135,7 +130,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (data.getData() != null){
+        if (data.getData() != null) {
 
             Uri iFile = data.getData();
 

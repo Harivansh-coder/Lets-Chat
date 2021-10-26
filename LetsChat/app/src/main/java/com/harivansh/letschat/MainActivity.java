@@ -2,16 +2,14 @@ package com.harivansh.letschat;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.harivansh.letschat.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     super.run();
                     sleep(1000);  //Delay of 1 seconds
                 } catch (Exception e) {
-                    Log.d(TAG,e.getMessage());
+                    Log.d(TAG, e.getMessage());
                 } finally {
 
 
@@ -43,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
                     finish();
 
                     FirebaseUser user = fauth.getCurrentUser();
-                    if (user != null){
+                    if (user != null) {
                         startActivity(new Intent(MainActivity.this, DashBoard.class));
                         finish();
-                    }else{
+                    } else {
                         startActivity(new Intent(MainActivity.this, Signin.class));
                         finish();
                     }

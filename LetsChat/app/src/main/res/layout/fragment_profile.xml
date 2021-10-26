@@ -21,11 +21,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="100dp"
         android:text="@string/user_name"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_page_image" />
 
@@ -33,12 +33,11 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:text="About"
         android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -48,7 +47,7 @@
         android:layout_marginStart="30dp"
         android:text="user name"
         android:textColor="@color/Blue"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
@@ -60,7 +59,7 @@
         android:layout_marginStart="30dp"
         android:text="about"
         android:textColor="@color/Blue"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5"
@@ -70,12 +69,11 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:text="Email"
         android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -85,7 +83,7 @@
         android:layout_marginStart="30dp"
         android:text="email"
         android:textColor="@color/Blue"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />

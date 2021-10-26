@@ -2,14 +2,14 @@ package com.harivansh.letschat;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,20 +17,16 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.harivansh.letschat.databinding.ActivitySignUpBinding;
 import com.harivansh.letschat.model.User;
 
 public class SignUp extends AppCompatActivity {
 
-    private ActivitySignUpBinding binding;
-
-    private FirebaseAuth fauth;
     FirebaseDatabase firebaseDatabase;
-
+    private ActivitySignUpBinding binding;
+    private FirebaseAuth fauth;
     private ProgressDialog progressDialog;
 
     @Override
@@ -52,7 +48,6 @@ public class SignUp extends AppCompatActivity {
 //        myRef.setValue("Hello, World!");
 
 
-
         // progress dialog
         progressDialog = new ProgressDialog(SignUp.this);
         progressDialog.setTitle("Creating Account");
@@ -70,7 +65,7 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    void signUp(){
+    void signUp() {
         progressDialog.show();
 
         // Getting user data
@@ -79,52 +74,54 @@ public class SignUp extends AppCompatActivity {
         String user_pass = binding.signUpPass.getText().toString().trim();
         String user_conPass = binding.signUpConPass.getText().toString().trim();
 
-        if (user_name.length() != 0 && user_email.length() != 0 && user_pass.length() != 0 && user_conPass.length() != 0){
-            if (user_pass.equals(user_conPass)){
+        if (user_name.length() != 0 && user_email.length() != 0 && user_pass.length() != 0 && user_conPass.length() != 0) {
+            if (user_pass.equals(user_conPass)) {
 
                 // user creation
                 fauth.createUserWithEmailAndPassword(user_email, user_conPass).
                         addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
-                            User user = new User(user_name,user_email);
+                                if (task.isSuccessful()) {
+                                    User user = new User(user_name, user_email);
 
-                            String userId = task.getResult().getUser().getUid(); // getting the userid from auth firebase
+                                    String userId = task.getResult().getUser().getUid(); // getting the userid from auth firebase
 
-                            //Toast.makeText(SignUp.this,userId,Toast.LENGTH_LONG).show();
-                            firebaseDatabase.getReference().child("Users").child(userId).setValue(user); // storing user data
+                                    //Toast.makeText(SignUp.this,userId,Toast.LENGTH_LONG).show();
+                                    firebaseDatabase.getReference().child("Users").child(userId).setValue(user); // storing user data
 
-                            progressDialog.dismiss();
+                                    progressDialog.dismiss();
 
-                            verifyEmail(user_email);
+                                    verifyEmail(user_email);
 
 
-                            Log.d("message", "signup success");
-                            Snackbar.make(binding.signupbutton,"account created successfully", BaseTransientBottomBar.LENGTH_LONG).show();
+                                    Log.d("message", "signup success");
+                                    Snackbar.make(binding.signupbutton, "account created successfully", BaseTransientBottomBar.LENGTH_LONG).show();
 //                            startActivity(new Intent(SignUp.this, Signin.class));
 //                            finish();
 
-                        }else{
-                            progressDialog.dismiss();
+                                } else {
+                                    progressDialog.dismiss();
 
-                            Log.d("error","Signup failed",task.getException());
-                            Snackbar.make(binding.signupbutton,task.getException().getMessage(),BaseTransientBottomBar.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                                    Log.d("error", "Signup failed", task.getException());
+                                    Snackbar.make(binding.signupbutton, task.getException().getMessage(), BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            }
+                        });
 
-            }else {
+            } else {
                 progressDialog.dismiss();
-                Snackbar.make(binding.signupbutton,"both password fields must be same", BaseTransientBottomBar.LENGTH_LONG).show();}
-        }else{
+                Snackbar.make(binding.signupbutton, "both password fields must be same", BaseTransientBottomBar.LENGTH_LONG).show();
+            }
+        } else {
             progressDialog.dismiss();
-            Snackbar.make(binding.signupbutton,"either of the field cannot be empty", BaseTransientBottomBar.LENGTH_LONG).show();}
+            Snackbar.make(binding.signupbutton, "either of the field cannot be empty", BaseTransientBottomBar.LENGTH_LONG).show();
+        }
 
     }
 
-    public void verifyEmail(String email){
+    public void verifyEmail(String email) {
 
         FirebaseUser user = fauth.getCurrentUser();
         user.sendEmailVerification()
@@ -133,14 +130,14 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Email sent.");
-                            Snackbar.make(binding.signupbutton,"a verification has been sent to you", BaseTransientBottomBar.LENGTH_LONG).show();
+                            Snackbar.make(binding.signupbutton, "a verification has been sent to you", BaseTransientBottomBar.LENGTH_LONG).show();
                         }
                     }
                 });
     }
 
-    public void backButton(View view){
-        startActivity(new Intent(SignUp.this,Signin.class));
+    public void backButton(View view) {
+        startActivity(new Intent(SignUp.this, Signin.class));
         finish();
     }
 
