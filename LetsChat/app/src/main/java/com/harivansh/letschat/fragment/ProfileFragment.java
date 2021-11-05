@@ -1,10 +1,13 @@
 package com.harivansh.letschat.fragment;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,6 +30,8 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding fragmentProfileBinding;
     private DatabaseReference databaseReference;
 
+    private ProgressDialog progressDialog;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -38,7 +43,13 @@ public class ProfileFragment extends Fragment {
         fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false);
 
 
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("getting your data");
+        progressDialog.show();
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
 
         // reading data from firebase
 
@@ -55,15 +66,18 @@ public class ProfileFragment extends Fragment {
                                 .placeholder(R.drawable.profile)
                                 .into(fragmentProfileBinding.profilePageImage);
 
+
                         fragmentProfileBinding.usernameTextView.setText(user.getUserName());
                         fragmentProfileBinding.profileAboutTextview.setText(user.getStatus());
                         fragmentProfileBinding.profileEmailTextview.setText(user.getUserEmail());
+                        progressDialog.dismiss();
 
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(),"something went wrong",Toast.LENGTH_LONG).show();
                         //Getting user failed, log a message
                         Log.w(TAG, "loadPost:onCancelled", error.toException());
                     }

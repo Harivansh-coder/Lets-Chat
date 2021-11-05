@@ -130,7 +130,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (data.getData() != null) {
+        if (data != null) {
 
             Uri iFile = data.getData();
 
