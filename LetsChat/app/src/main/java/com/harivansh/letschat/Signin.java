@@ -57,7 +57,6 @@ public class Signin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Signin.this, SignUp.class));
-                finish();
             }
         });
 
@@ -66,7 +65,6 @@ public class Signin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Signin.this, ForgotPassword.class));
-                finish();
             }
         });
 
@@ -100,7 +98,6 @@ public class Signin extends AppCompatActivity {
                                 if (user.isEmailVerified()) {
 
                                     progressDialog.dismiss();
-
                                     Log.d("message", "signin success");
                                     Snackbar.make(binding.signinbutton, "signin successful", BaseTransientBottomBar.LENGTH_LONG).show();
                                     startActivity(new Intent(Signin.this, DashBoard.class));
@@ -108,7 +105,6 @@ public class Signin extends AppCompatActivity {
 
                                 } else {
                                     progressDialog.dismiss();
-
                                     fauth.signOut();
                                     verifyEmail(user_email);
                                     Snackbar.make(binding.signinbutton, "you are not a verified user, verification email has been sent", BaseTransientBottomBar.LENGTH_LONG).show();
@@ -127,7 +123,6 @@ public class Signin extends AppCompatActivity {
         } else {
 
             progressDialog.dismiss();
-
             Snackbar.make(binding.signinbutton, "either of the fields cannot be empty", BaseTransientBottomBar.LENGTH_LONG).show();
         }
 

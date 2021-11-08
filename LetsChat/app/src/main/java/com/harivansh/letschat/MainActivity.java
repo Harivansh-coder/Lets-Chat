@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 } finally {
 
 
-                    startActivity(new Intent(MainActivity.this, Signin.class));
-                    finish();
+//                    startActivity(new Intent(MainActivity.this, Signin.class));
+//                    finish();
 
                     FirebaseUser user = fauth.getCurrentUser();
                     if (user != null) {

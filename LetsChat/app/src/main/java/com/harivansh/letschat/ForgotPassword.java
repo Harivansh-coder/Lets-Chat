@@ -67,7 +67,7 @@ public class ForgotPassword extends AppCompatActivity {
         binding.BackFps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ForgotPassword.this,Signin.class));
+
                 finish();
 
             }

@@ -121,27 +121,30 @@ public class ChatScreen extends AppCompatActivity {
             public void onClick(View v) {
                 String chatMessage = binding.chatMessage.getText().toString();
 
-                final Messages messages = new Messages(userId, chatMessage);
-                messages.setMessageTime(new Date().getTime());
-                binding.chatMessage.setText("");
+                if (!chatMessage.isEmpty()){
 
-                firebaseDatabase.getReference().child("Chats")
-                        .child(senderChatId)
-                        .push()
-                        .setValue(messages).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        firebaseDatabase.getReference().child("Chats")
-                                .child(receiverChatId)
-                                .push()
-                                .setValue(messages).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
+                    final Messages messages = new Messages(userId, chatMessage);
+                    messages.setMessageTime(new Date().getTime());
+                    binding.chatMessage.setText("");
 
-                            }
-                        });
-                    }
-                });
+                    firebaseDatabase.getReference().child("Chats")
+                            .child(senderChatId)
+                            .push()
+                            .setValue(messages).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            firebaseDatabase.getReference().child("Chats")
+                                    .child(receiverChatId)
+                                    .push()
+                                    .setValue(messages).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                }
+                            });
+                        }
+                    });
+                }
 
             }
         });
